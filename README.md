@@ -1,6 +1,8 @@
 
 # python_calculator_user_string_input
 
+Avaiable operation for this project : +, -, /, *, brackets
+
 How to run this project:
 
 Active server side first:

@@ -19,6 +19,41 @@ def send(msg):
     client.send(message)
     print(client.recv(2048).decode(FORMAT))
 
+def string_check(inpcheck):
+    brackets=0
+    res=True
+    operator=["+","-","/","*"]
+    num=["0","1","2","3","4","5","6","7","8","9"]
+    for i in range (0,len(inpcheck)):
+        if(i==len(inpcheck)-1 and brackets!=0):
+            res=False
+            break
+        if(inpcheck[i]=='('):
+            brackets=brackets+1
+            if(inpcheck[i-1] in num and i!=0):
+                res=False
+                break
+            if(inpcheck[i+1] in operator and i!=len(inpcheck)-1):
+                res=False
+                break
+        if(inpcheck[i]==')'):
+            brackets=brackets-1
+            if(inpcheck[i+1] in num and i!=len(inpcheck)-1):
+                res=False
+                break
+            if(inpcheck[i-1] in operator and i!=0):
+                res=False
+                break
+        if(inpcheck[i] in operator):
+            if(inpcheck[i-1] in operator and i!=0):
+                res=False
+                break
+            if(inpcheck[i+1] in operator and i!=len(inpcheck)-1):
+                res=False
+                break
+    return res    
+    
+    
 print("Hello, thank you for using one line calculator!")
 print("input q to quit calculator")
 while True:
@@ -27,5 +62,9 @@ while True:
     if(inp_user=="q"):       
         send(DISCONNECT_MESSAGE)
         break
-    send(inp_user)
+    check_string=string_check(inp_user)
+    if check_string==True:
+        send(inp_user)
+    else:       
+        send("fail")
     

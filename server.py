@@ -22,6 +22,13 @@ def handle_client(conn, addr):
         if msg_length:
             msg_length = int(msg_length)
             msg = conn.recv(msg_length).decode(FORMAT)
+            if msg== "fail":
+                conn.send("WRONG INPUT FORMAT! TRY AND CHECK AGAIN".encode(FORMAT))
+            else:
+                res=calculator(msg)
+                print(res)
+                conn.send(str(res).encode(FORMAT))    
+                 
             if msg == DISCONNECT_MESSAGE:
                  bye="Thank you comeback later!"
                  conn.send(bye.encode(FORMAT))
@@ -29,9 +36,7 @@ def handle_client(conn, addr):
 
             print(f"[{addr}] {msg}")
             
-            res=calculator(msg)
-            print(res)
-            conn.send(str(res).encode(FORMAT))
+            
 
     conn.close()
 

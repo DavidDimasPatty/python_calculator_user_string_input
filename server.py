@@ -35,25 +35,6 @@ def handle_client(conn, addr):
 
     conn.close()
 
-def brackets(Allexp,Oneexp):
-        result=""
-        leng=len(Oneexp)
-        for i in range(0,leng):
-            if(i==leng-1):
-                break
-            if Allexp[i]=="+":
-                result=float(Oneexp[i-1])+float(Oneexp[i+1])
-                i=i+1
-            if Allexp[i]=="-":
-                result=float(Oneexp[i-1])-float(Oneexp[i+1])
-                i=i+1
-            if Allexp[i]=="/":
-                result=float(Oneexp[i-1])/float(Oneexp[i+1])
-                i=i+1
-            if Allexp[i]=="*":
-                result=float(Oneexp[i-1])*float(Oneexp[i+1])
-                i=i+1
-        return result
 
 def numparser(Allexp):
         leng=len(Allexp)

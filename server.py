@@ -52,7 +52,7 @@ def numparser(Allexp):
             if(Allexp[i]=="+" or Allexp[i]=="-" or Allexp[i]=="*" or Allexp[i]=="/" or Allexp[i]=="(" or Allexp[i]==")" or i==leng-1):
                 if(num==""):
                     num=Allexp[i]
-                elif(Allexp[i]!="+" and Allexp[i]!="-" and Allexp[i]!="*" and Allexp[i]!="/" and Allexp[i]=="(" and Allexp[i]==")"):
+                elif(Allexp[i]!="+" and Allexp[i]!="-" and Allexp[i]!="*" and Allexp[i]!="/" and Allexp[i]!="(" and Allexp[i]!=")"):
                     num=num+Allexp[i]
                 print("masuk")
                 arrnum.append(num)
